@@ -1,3 +1,199 @@
-.starter {
-  font-size: 18px;
+// General Styles
+@import './styles/vars';
+@import './styles/mixins';
+@import './styles/fonts';
+
+// General Components
+@import './components/Icon/Icon.module';
+@import './components/Logo/Logo.module';
+@import './components/Menu/Menu.module';
+@import './components/Nav/Nav.module';
+@import './components/Product/Product.module';
+@import './components/ProductContent/ProductContent.module';
+@import './components/ImagesSlider/ImagesSlider.module';
+@import './components/Header/Header.module';
+@import './components/Footer/Footer.module';
+@import './components/ProductsSlider/ProductsSlider.module';
+@import './components/ProductsList/ProductsList.module';
+@import './components/AddToCart/AddToCart.module';
+@import './components/AddToFav/AddToFav.module';
+@import './components/Breadcrumbs/Breadcrumbs.module';
+@import './components/Loader/Loader.module';
+@import './components/BackBtn/BackBtn.module';
+@import './components/ErrorMessage/ErrorMessage.module';
+@import './components/Pagination/Pagination.module';
+@import './components/SearchBar/SearchBar.module';
+@import './components/Notification/Notification.module';
+
+// Module HomePage
+@import './modules/HomePage/components/Hero/Hero.module';
+@import './modules/HomePage/components/PicturesSlider/PicturesSlider.module';
+@import './modules/HomePage/components/Category/Category.module';
+@import './modules/HomePage/components/Banner/Banner.module';
+
+// Module ShoppingCartPage
+@import './modules/ShoppingCartPage/ShoppingCartPage.module';
+@import './modules/ShoppingCartPage/components/CartItem/CartItem.module';
+@import './modules/ShoppingCartPage/components/ModalCheckout/ModalCheckout.module';
+
+// Module FavoritesPage
+@import './modules/FavoritesPage/FavoritesPage.module';
+
+// Module ProductDetailsPage
+@import './modules/ProductDetailsPage/ProductDetailsPage.module';
+@import './modules/ProductDetailsPage/components/Details/Details.module';
+
+// Module ProductCatalogPage
+@import './modules/CatalogPage/CatalogPage.module';
+
+// Module NotFoundPage
+@import './modules/NotFoundPage/NotFoundPage.module';
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+  background-color: var(--c-black);
+
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: var(--c-white);
+}
+
+body {
+  margin: 0;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+/* General */
+
+.container {
+  @include container-mobile;
+
+  @include on-tablet {
+    @include container-tablet;
+  }
+
+  @include on-desktop {
+    @include container-desktop;
+  }
+}
+
+.page {
+  box-sizing: border-box;
+  padding: 24px 0 56px;
+
+  @include on-tablet {
+    padding: 24px 0 64px;
+  }
+
+  @include on-desktop {
+    padding: 24px 0 80px;
+  }
+}
+
+.section {
+  padding: 28px 0;
+
+  @include on-tablet {
+    padding: 32px 0;
+  }
+
+  @include on-desktop {
+    padding: 40px 0;
+  }
+}
+
+.page-title {
+  font-size: 32px;
+  line-height: 128%;
+  letter-spacing: -0.01em;
+}
+
+.section-title {
+  font-size: 22px;
+  line-height: 140%;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 128%;
+  }
+}
+
+.button {
+  cursor: pointer;
+  background-color: var(--c-accent);
+  border: none;
+  color: #f1f2f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @include on-desktop {
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: #a378ff;
+    }
+  }
+
+  &--red {
+    background-color: var(--c-red);
+
+    @include on-desktop {
+      transition: background-color 0.5s;
+
+      &:hover {
+        background-color: #f76969;
+      }
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* app */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__menu {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.main {
+  flex: 1;
 }

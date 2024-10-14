@@ -1,0 +1,30 @@
+.back-btn {
+  cursor: pointer;
+  width: fit-content;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @include on-desktop {
+    transition: color 0.5s;
+
+    .icon {
+      transition: fill 0.5s;
+    }
+
+    &:hover {
+      color: var(--c-accent);
+
+      .icon {
+        fill: var(--c-accent);
+      }
+    }
+  }
+}

@@ -1,21 +1,53 @@
-import React from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { Menu } from './components/Menu';
+import { useEffect, useState } from 'react';
 
-interface Props {
-  onClick: () => void;
-  children: React.ReactNode;
-}
+export const App = () => {
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const location = useLocation();
 
-export const Provider: React.FC<Props> = React.memo(({ onClick, children }) => (
-  <button type="button" onClick={onClick}>
-    {children}
-  </button>
-));
+  if (isMenuActive) {
+    document.body.classList.add('no-scroll');
+  } else {
+    document.body.removeAttribute('class');
+  }
 
-export const App: React.FC = () => {
+  const toggleMenu = () => {
+    setIsMenuActive(prev => !prev);
+
+    const handleResize = () => {
+      if (window.innerWidth >= 640) {
+        setIsMenuActive(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  };
+
+  useEffect(() => {
+    setIsMenuActive(false);
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>TodoList</Provider>
+    <div className="app">
+      <Header isMenuActive={isMenuActive} handleBurgerClick={toggleMenu} />
+      <Menu
+        className={`${isMenuActive ? 'menu--active app__menu' : 'app__menu'}`}
+      />
+
+      <main className="main">
+        <Outlet />
+      </main>
+
+      <Footer />
     </div>
   );
 };

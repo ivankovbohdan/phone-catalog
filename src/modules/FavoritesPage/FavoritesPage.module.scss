@@ -1,0 +1,23 @@
+.favorites {
+
+  &__breadcrumbs {
+    margin: 0 0 24px;
+
+    @include on-desktop {
+    margin: 0 0 40;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__text {
+    margin: 0 0 32px;
+    color: var(--c-secondary);
+
+    @include on-tablet {
+    margin: 0 0 40px;
+    }
+  }
+}
